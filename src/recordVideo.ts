@@ -1,5 +1,9 @@
 
 
+// It works.
+// For now, need to be called manually
+// and bound to the variable relevant to get good timing.
+
 const type = "video/webm"
 //const type = "video/mp4; codecs='avc1.42E01E, mp4a.40.2'"
 

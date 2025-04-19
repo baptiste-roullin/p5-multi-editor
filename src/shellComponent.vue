@@ -3,8 +3,9 @@ import { onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 
-// important
-import type global from 'node_modules/@types/p5/global.d.ts'
+// "shell" because because it's barely a component, only a thin layer to run p5.js.
+// Switching p5 sketches only reruns P5, it's always the same component instance.
+
 
 import { globalInit } from '@/runP5'
 
@@ -19,8 +20,6 @@ async function initInsideComponent(fileName) {
 
 	} catch (error) {
 		console.log(error)
-
-
 	}
 }
 
@@ -40,5 +39,5 @@ onMounted(async () => {
 </script>
 
 <template>
-	<!-- canvas el will be created and inserted by p5 -->
+	<!-- canvas element will be created and inserted by p5 -->
 </template>
