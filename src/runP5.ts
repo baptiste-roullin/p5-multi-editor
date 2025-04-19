@@ -1,6 +1,8 @@
+import type global from 'node_modules/@types/p5/global.d.ts'
+
 export const usefulWidth = window.innerWidth * .88
 export const usefulHeight = window.innerHeight * .90
-import p5 from '../node_modules/p5/lib/p5.esm'
+
 
 function windowResized() {
 	resizeCanvas(usefulWidth, usefulHeight)
@@ -17,6 +19,7 @@ function fallbacksetup(isLoop) {
 }
 export async function globalInit(p5Primitives, isLoop = true) {
 	let { setup } = p5Primitives
+	window['windowResized'] = windowResized
 
 
 	for (const primitive in p5Primitives) {
@@ -25,19 +28,11 @@ export async function globalInit(p5Primitives, isLoop = true) {
 				setup = fallbacksetup
 			}
 		}
-
 		window[primitive] = null
 		window[primitive] = p5Primitives[primitive]
 	}
 
-
-
 	window['windowResized'] = windowResized
-
-
-
-	//await new p5(null, document.querySelector("#p5-vue"))
-	//await new p5()
 
 
 }

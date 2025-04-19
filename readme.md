@@ -1,5 +1,4 @@
-WARNING: VERY CRUDE, ABSOLUTELY UNFINISHED
-
+WARNING: VERY MUCH IN A BETA STATE
 
 # A p5.js multi editor
 
@@ -12,27 +11,36 @@ The motivation is to provide the best of both worlds between the "default" mode 
 
 ![](screenshot.png)
 
-
 ## Setup
+
 1. Clone.
 2. `npm install`.
-5. Run `npm run dev` to launch the app and `update-files` to hot-reload files.
-6. Add .ts files with P5 code in the folder named P5. See sample files for reference.
+5. Run `npm run dev` to launch the app and `npm run update-files` to hot-reload files.
+6. Add .ts files with P5 code in the folder named sketches. See sample files for reference.
 
-
-## How it works
-
-Every file in the P5 folder must
+Every file in the `sketches` folder must
 
 - be a .ts file
 - have a `draw` function
-- exports this function with a named export (no `default`).
+- export it function with a named export (no `default`). And  functions
 
-Everytime  you click on a sketch in the left bar, `draw()` and `setup()` are added to the global `window` object (replacing potential previous occurences) and the `P5()` constructor is called. This constructor picks these two function and execute them.
+## How it works
+
+Assuming only one sketch:
+
+1. `draw()`and other function exports are imported from your file in the `sketches` folder and added to the global `window` object.
+2. If no `setup` is present, a basic fallback is provided, with fitting dimensions.
+2. P5 (bundled by Vue) is called, detects these functions ([see rules](https://github.com/processing/p5.js/wiki/Global-and-instance-mode#when-is-global-mode-assumed)), runs the sketch and inserts a `canvas` in `index.html
+
+Assuming several sketches:
+
+1. Running `updateFileList.ts` creates a `files.json`file. The Vue app uses the file list to populate the left navigation bar.
+
+2. Everytime  you click on a sketch in the left bar, functions are imported again, overwriting previous `windows` properties. Vue is only used for routing and state management, it's always the samme component instance.
 
 ## Warnings
 
 - No cross-platform testing
-- No memory leak testing
+- No serious memory leak testing
 - No performance test with heavy files (WebGL and such).
 
