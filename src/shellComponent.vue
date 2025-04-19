@@ -41,5 +41,5 @@ onMounted(async () => {
 </script>
 
 <template>
-	<canvas></canvas>
+	<!-- canvas el will be created and inserted by p5 -->
 </template>

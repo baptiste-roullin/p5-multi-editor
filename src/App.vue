@@ -28,21 +28,24 @@ import shellComponent from "@/shellComponent.vue"
 </template>
 
 <style scoped>
-<<<<<<< HEAD .logo {
+.logo {
   display: block;
   margin: 0 auto 2rem;
 }
 
-=======>>>>>>>main nav {
+nav {
   width: 100%;
   font-size: 14px;
   text-align: center;
   margin-top: 2rem;
   height: 100%;
   overflow-y: scroll;
+  line-height: 1.5;
+  max-height: 100vh;
 }
 
-<<<<<<< HEAD=======>>>>>>>main nav a {
+
+nav a {
   text-decoration: none;
   color: var(--color-slate-300);
   transition: 0.4s;
@@ -50,8 +53,9 @@ import shellComponent from "@/shellComponent.vue"
   font-weight: 500;
   display: inline-block;
   padding: 1rem 1.5rem;
+  ;
   word-wrap: anywhere;
-  border-bottom: var(--color-slate-500) 1px solid;
+  border-bottom: var(--vt-c-divider-dark-1) 1px solid;
 }
 
 nav a.router-link-exact-active {
@@ -65,12 +69,23 @@ nav a:hover {
   color: var(--color-slate-800);
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: start;
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+  text-align: left;
+  font-size: 1rem;
+  margin-top: 0rem;
+  width: 12vw;
+}
+
+@media (min-width: 1100px) {
+
+  nav {
     //padding-right: calc(var(--section-gap) / 2);
-    width: 12vw;
+    text-align: center;
+
+
 
   }
 
@@ -78,13 +93,7 @@ nav a:hover {
     margin: 0 2rem 0 0;
   }
 
-  nav {
-    display: flex;
-    flex-direction: column;
-    gap: 0rem;
-    text-align: left;
-    font-size: 1rem;
-    margin-top: 0rem;
-  }
+
+
 }
 </style>
