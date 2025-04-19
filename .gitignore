@@ -21,3 +21,4 @@ coverage
 *.sw?
 *.code-workspace
 *.vscode
+files.json

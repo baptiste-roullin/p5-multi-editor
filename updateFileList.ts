@@ -10,6 +10,7 @@ async function writeFileList(pathFile) {
 	await targetFile.close()
 }
 
+
 (async function () {
 	try {
 		const pathFile = process.cwd() + "/sketches/"

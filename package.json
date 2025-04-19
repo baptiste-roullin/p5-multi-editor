@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "update-files": "node src/updateFileList.ts --experimental-strip-types",
+    "update-files": "node ./updateFileList.ts --experimental-strip-types",
     "dev": "vite",
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false"
   },
