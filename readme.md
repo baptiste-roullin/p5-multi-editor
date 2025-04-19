@@ -17,18 +17,18 @@ The motivation is to provide the best of both worlds between the "default" mode 
 1. Clone.
 2. `npm install`.
 5. Run `npm run dev` to launch the app and `update-files` to hot-reload files.
-6. Add .ts files with p5 code in the folder named p5. See sample files for reference.
+6. Add .ts files with P5 code in the folder named P5. See sample files for reference.
 
 
 ## How it works
 
-Every file in the p5 folder must
+Every file in the P5 folder must
 
 - be a .ts file
 - have a `draw` function
 - exports this function with a named export (no `default`).
 
-Everytime  you click on a sketch in the left bar, `draw()` and `setup()` are added to the global `window` object (replacing potential previous occurences) and the `p5()` constructor is called. This constructor picks these two function and execute them.
+Everytime  you click on a sketch in the left bar, `draw()` and `setup()` are added to the global `window` object (replacing potential previous occurences) and the `P5()` constructor is called. This constructor picks these two function and execute them.
 
 ## Warnings
 
