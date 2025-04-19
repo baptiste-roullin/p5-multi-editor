@@ -34,14 +34,19 @@ import shellComponent from "@/shellComponent.vue"
 }
 
 nav {
-  width: 100%;
   font-size: 14px;
-  text-align: center;
   margin-top: 2rem;
   height: 100%;
   overflow-y: scroll;
   line-height: 1.5;
   max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 1rem;
 }
 
 
@@ -69,21 +74,15 @@ nav a:hover {
   color: var(--color-slate-800);
 }
 
-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 0rem;
-  text-align: left;
-  font-size: 1rem;
-  margin-top: 0rem;
-  width: 12vw;
-}
+
 
 @media (min-width: 1100px) {
 
   nav {
     //padding-right: calc(var(--section-gap) / 2);
-    text-align: center;
+
+    width: 12vw;
+    text-align: left;
 
 
 
