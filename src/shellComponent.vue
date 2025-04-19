@@ -13,10 +13,9 @@ const route = useRoute()
 async function initInsideComponent(fileName) {
 	try {
 		const name = String(fileName)
-		const { draw } = await import(`../p5/${name}.ts`)
-		let { setup } = await import(`../p5/${name}.ts`)
+		const p5Primitives = await import(`../sketches/${name}.ts`)
 
-		globalInit(draw, setup)
+		globalInit(p5Primitives)
 
 	} catch (error) {
 		console.log(error)
