@@ -1,10 +1,9 @@
 <script setup lang="ts">
-//TODO: allow overriding setup function
-//TODO:  video and picture recording function. input variable to watch for looping
+//TODO:  video and picture recording function. input variable as argument to watch for looping
 // TODO Logging function?
 // TODO performance tests
 // TODO cross-env tests
-// to support: noLoop(), loop(), isLooping(), push(),pop(), preload(),setup(),draw(),remove()
+// production mode ?
 import { RouterLink } from 'vue-router'
 import { cleanedList } from './cleanList'
 

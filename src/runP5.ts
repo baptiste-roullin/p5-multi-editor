@@ -1,8 +1,10 @@
 import type global from 'node_modules/@types/p5/global.d.ts'
+// important
+// even if not run in the file, keep it so Vite detects P5 as a dependency and bundles it.
+import p5 from "../node_modules/p5/lib/p5.esm"
 
 export const usefulWidth = window.innerWidth * .88
 export const usefulHeight = window.innerHeight * .90
-
 
 function windowResized() {
 	resizeCanvas(usefulWidth, usefulHeight)
@@ -33,6 +35,5 @@ export async function globalInit(p5Primitives, isLoop = true) {
 	}
 
 	window['windowResized'] = windowResized
-
 
 }
