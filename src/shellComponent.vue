@@ -15,7 +15,7 @@ async function initInsideComponent(fileName) {
 		const name = String(fileName)
 		const p5Primitives = await import(`../sketches/${name}.ts`)
 
-		globalInit(draw, setup)
+		globalInit(p5Primitives)
 
 	} catch (error) {
 		console.log(error)

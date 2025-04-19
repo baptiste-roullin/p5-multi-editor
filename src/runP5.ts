@@ -15,24 +15,29 @@ function fallbacksetup(isLoop) {
 	//must be the last line
 	setLoop()
 }
-export async function globalInit(draw, setup, isLoop = true) {
+export async function globalInit(p5Primitives, isLoop = true) {
+	let { setup } = p5Primitives
 
-	if (!setup || typeof setup !== "function") {
-		setup = fallbacksetup
+
+	for (const primitive in p5Primitives) {
+		if (primitive === "setup") {
+			if (!setup || typeof setup !== "function") {
+				setup = fallbacksetup
+			}
+		}
+
+		window[primitive] = null
+		window[primitive] = p5Primitives[primitive]
 	}
 
 
 
 	window['windowResized'] = windowResized
 
-	window['setup'] = null
-	window['setup'] = setup
-	window['draw'] = null
-	window['draw'] = draw
 
-	//@ts-ignore
-	await new p5()
 
+	//await new p5(null, document.querySelector("#p5-vue"))
+	//await new p5()
 
 
 }
