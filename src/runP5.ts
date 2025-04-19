@@ -23,9 +23,9 @@ export async function globalInit(p5Primitives, isLoop = true, draw) {
 
 	for (const primitive in p5Primitives) {
 		if (typeof p5Primitives[primitive] === "function") {
-		window[primitive] = null
-		window[primitive] = p5Primitives[primitive]
-	}
+			window[primitive] = null
+			window[primitive] = p5Primitives[primitive]
+		}
 	}
 
 	if (!(Object.hasOwn(p5Primitives, "setup"))) {
@@ -35,6 +35,12 @@ export async function globalInit(p5Primitives, isLoop = true, draw) {
 
 	if (!(Object.hasOwn(p5Primitives, "windowResized"))) {
 		window['windowResized'] = null
-	window['windowResized'] = windowResized
-
+		window['windowResized'] = windowResized
+	}
+	const main = document.querySelector("body main")
+	const canvas = document.querySelector("main canvas")
+	if (canvas) {
+		main!.removeChild(canvas)
+	}
+	await new p5()
 }
