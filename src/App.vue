@@ -28,12 +28,12 @@ import shellComponent from "@/shellComponent.vue"
 </template>
 
 <style scoped>
-.logo {
+<<<<<<< HEAD .logo {
   display: block;
   margin: 0 auto 2rem;
 }
 
-nav {
+=======>>>>>>>main nav {
   width: 100%;
   font-size: 14px;
   text-align: center;
@@ -42,8 +42,7 @@ nav {
   overflow-y: scroll;
 }
 
-
-nav a {
+<<<<<<< HEAD=======>>>>>>>main nav a {
   text-decoration: none;
   color: var(--color-slate-300);
   transition: 0.4s;
@@ -51,9 +50,8 @@ nav a {
   font-weight: 500;
   display: inline-block;
   padding: 1rem 1.5rem;
-  ;
   word-wrap: anywhere;
-  border-bottom: var(--vt-c-divider-dark-1) 1px solid;
+  border-bottom: var(--color-slate-500) 1px solid;
 }
 
 nav a.router-link-exact-active {
@@ -80,7 +78,6 @@ nav a:hover {
     margin: 0 2rem 0 0;
   }
 
-
   nav {
     display: flex;
     flex-direction: column;
@@ -88,8 +85,6 @@ nav a:hover {
     text-align: left;
     font-size: 1rem;
     margin-top: 0rem;
-
-
   }
 }
 </style>
