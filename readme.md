@@ -17,7 +17,7 @@ The motivation is to provide the best of both worlds between the "default" mode 
 1. Clone.
 2. `npm install`.
 5. Run `npm run dev` to launch the app and `update-files` to hot-reload files.
-6. Add .ts files with P5 code in the folder named p5. See sample files for reference.
+6. Add .ts files with p5 code in the folder named p5. See sample files for reference.
 
 
 ## How it works
