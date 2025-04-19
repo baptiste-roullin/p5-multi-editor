@@ -1,13 +1,4 @@
-
-export function draw() {
-	background(0)
-	fill(100)
-	rect(10, 10, 50, 50)
-}
-
-/*
-let value = 0
-
+let value = 200
 export function draw() {
 	background(0)
 	fill(value)
@@ -15,12 +6,10 @@ export function draw() {
 }
 
 
-function doubleClicked() {
-	if (value === 0) {
-		value = 255
+export function clicked() {
+	if (value === 200) {
+		value = 100
 	} else {
-		value = 0
+		value = 200
 	}
-	// Uncomment to prevent any default behavior.
-	// return false;
-}*/
+}

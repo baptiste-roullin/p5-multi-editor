@@ -19,21 +19,22 @@ function fallbacksetup(isLoop) {
 	//must be the last line
 	setLoop()
 }
-export async function globalInit(p5Primitives, isLoop = true) {
-	let { setup } = p5Primitives
-	window['windowResized'] = windowResized
-
+export async function globalInit(p5Primitives, isLoop = true, draw) {
 
 	for (const primitive in p5Primitives) {
-		if (primitive === "setup") {
-			if (!setup || typeof setup !== "function") {
-				setup = fallbacksetup
-			}
-		}
+		if (typeof p5Primitives[primitive] === "function") {
 		window[primitive] = null
 		window[primitive] = p5Primitives[primitive]
 	}
+	}
 
+	if (!(Object.hasOwn(p5Primitives, "setup"))) {
+		window['setup'] = null
+		window['setup'] = fallbacksetup
+	}
+
+	if (!(Object.hasOwn(p5Primitives, "windowResized"))) {
+		window['windowResized'] = null
 	window['windowResized'] = windowResized
 
 }

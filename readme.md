@@ -22,7 +22,7 @@ Every file in the `sketches` folder must
 
 - be a .ts file
 - include a `draw` function
-- Export it with a named export (no `default`). Basically every P5 global function listed [here](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/p5/index.d.ts) and [here](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/p5/src/events) should work, as long as you export them.
+- Export it with a named export (no `default`). Basically every P5 global function listed [here](https://github.com/processing/p5.js/blob/main/src/core/friendly_errors/fes_core.js#L80) should work, as long as you export them.
 
 ## How it works
 
