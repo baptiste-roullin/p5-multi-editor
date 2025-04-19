@@ -1,9 +1,10 @@
 <script setup lang="ts">
 //TODO: allow overriding setup function
 //TODO:  video and picture recording function. input variable to watch for looping
-// Logging function?
-// performance tests
-// cross-env tests
+// TODO Logging function?
+// TODO performance tests
+// TODO cross-env tests
+// to support: noLoop(), loop(), isLooping(), push(),pop(), preload(),setup(),draw(),remove()
 import { RouterLink } from 'vue-router'
 import { cleanedList } from './cleanList'
 
@@ -21,7 +22,9 @@ import shellComponent from "@/shellComponent.vue"
     </nav>
   </header>
 
-  <shellComponent :fileName="cleanedList[0]" />
+  <main>
+    <shellComponent :fileName="cleanedList[0]" />
+  </main>
 </template>
 
 <style scoped>

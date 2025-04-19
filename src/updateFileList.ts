@@ -13,7 +13,7 @@ async function writeFileList(pathFile) {
 
 (async function () {
 	try {
-		const pathFile = process.cwd() + "/p5/"
+		const pathFile = process.cwd() + "/sketches/"
 		await writeFileList(pathFile)
 		const watcher = watch(pathFile)
 		for await (const event of watcher) {

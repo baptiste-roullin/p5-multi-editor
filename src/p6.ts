@@ -1,4 +1,4 @@
-import p5, { type RENDERER, type p5InstanceExtensions } from 'p5'
+import p5, { type RENDERER, type p5InstanceExtensions } from '../node_modules/p5/lib/p5.esm'
 
 export default class p6 extends p5 {
 	vertices(vertices, settings) {

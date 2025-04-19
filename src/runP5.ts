@@ -1,6 +1,6 @@
 export const usefulWidth = window.innerWidth * .88
 export const usefulHeight = window.innerHeight * .90
-import p5 from 'p5'
+import p5 from '../node_modules/p5/lib/p5.esm'
 
 function windowResized() {
 	resizeCanvas(usefulWidth, usefulHeight)
