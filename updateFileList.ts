@@ -3,7 +3,10 @@ import path from 'node:path'
 
 async function writeFileList(pathFile) {
 	const cleanedFiles = (await readdir(pathFile))
-		.filter(file => path.extname(file) === ".ts")
+		.filter(file =>
+		((path.extname(file) === ".ts")
+			&& !(/.d.ts$/.test(path.basename(file))))
+		)
 		.map(file => path.basename(file, ".ts"))
 	const targetFile = await open(process.cwd() + "/files.json", 'w')
 	await targetFile.writeFile(JSON.stringify(cleanedFiles))
@@ -25,10 +28,3 @@ async function writeFileList(pathFile) {
 		console.log(err)
 	}
 })()
-function getFileList() {
-
-
-}
-
-
-
