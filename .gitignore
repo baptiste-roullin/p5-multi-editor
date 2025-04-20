@@ -19,7 +19,6 @@ coverage
 *.njsproj
 *.sln
 *.sw?
-*.code-workspace
 *.vscode
 files.json
 sketches/*.ts
