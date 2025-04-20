@@ -22,3 +22,4 @@ coverage
 *.code-workspace
 *.vscode
 files.json
+sketches/*.ts
