@@ -1,7 +1,11 @@
-let value = 200
+import { ref } from 'vue'
+
+
+defineProps(["bg"])
+console.log(bg, bg.value)
 export function draw() {
 	background(0)
-	fill(value)
+	fill(bg.value)
 	rect(10, 10, 50, 50)
 }
 

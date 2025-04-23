@@ -8,6 +8,7 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false"
   },
   "dependencies": {
+    "@cyrilf/vue-dat-gui": "^1.1.0",
     "d3-color": "*",
     "p5": "2.0.0",
     "random-seed": "*",
