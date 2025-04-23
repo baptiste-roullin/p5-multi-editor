@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "d3-color": "*",
-    "p5": "2.0.0",
+    "p5": "2.0.1",
     "random-seed": "*",
     "vue": "*",
     "vue-router": "*"
