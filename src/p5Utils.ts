@@ -1,5 +1,5 @@
 
-import p5 from '../node_modules/p5/lib/p5.esm'
+import p5 from 'p5'
 
 export const width = window.innerWidth
 export const height = window.innerHeight

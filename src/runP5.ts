@@ -1,7 +1,7 @@
 import type global from 'node_modules/@types/p5/global.d.ts'
 // important
 // even if not run in the file, keep it so Vite detects P5 as a dependency and bundles it.
-import p5 from "../node_modules/p5/lib/p5.esm"
+import p5 from "p5"
 
 export const usefulWidth = window.innerWidth * .88
 export const usefulHeight = window.innerHeight * .90
@@ -42,5 +42,5 @@ export async function globalInit(p5Primitives, isLoop = true, draw) {
 	if (canvas) {
 		main!.removeChild(canvas)
 	}
-	await new p5()
+	await new p5(null, "main")
 }
