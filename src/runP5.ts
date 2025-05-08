@@ -19,7 +19,7 @@ function fallbacksetup(isLoop) {
 	//must be the last line
 	setLoop()
 }
-export async function globalInit(p5Primitives, isLoop = true, draw) {
+export async function globalInit(p5Primitives) {
 
 	for (const primitive in p5Primitives) {
 		if (typeof p5Primitives[primitive] === "function") {
