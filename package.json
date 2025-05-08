@@ -10,9 +10,10 @@
   "dependencies": {
     "d3-color": "*",
     "p5": "2.0.0",
+    "p5.capture": "^1.6.0",
     "random-seed": "*",
     "vue": "*",
-    "vue-router": "*"
+    "vue-router": "*",
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0",

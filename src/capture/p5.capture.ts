@@ -1,40 +1,40 @@
-import { createUi, UiState } from "@/ui";
-import { Recorder } from "@/recorders/base";
-import { Mp4Recorder, Mp4RecorderOptions } from "@/recorders/mp4-recorder";
-import { WebmRecorder, WebmRecorderOptions } from "@/recorders/webm-recorder";
-import { GifRecorder, GifRecorderOptions } from "@/recorders/gif-recorder";
-import { PngRecorder, PngRecorderOptions } from "@/recorders/png-recorder";
-import { JpgRecorder, JpgRecorderOptions } from "@/recorders/jpg-recorder";
-import { WebpRecorder, WebpRecorderOptions } from "@/recorders/webp-recorder";
-import { ImageFormat } from "@/recorders/image-recorder";
-import { downloadBlob } from "@/utils";
+import { createUi, UiState } from "@/capture/ui"
+import { Recorder } from "@/capture/recorders/base"
+import { Mp4Recorder, Mp4RecorderOptions } from "@/capture/recorders/mp4-recorder"
+import { WebmRecorder, WebmRecorderOptions } from "@/capture/recorders/webm-recorder"
+import { GifRecorder, GifRecorderOptions } from "@/capture/recorders/gif-recorder"
+import { PngRecorder, PngRecorderOptions } from "@/capture/recorders/png-recorder"
+import { JpgRecorder, JpgRecorderOptions } from "@/capture/recorders/jpg-recorder"
+import { WebpRecorder, WebpRecorderOptions } from "@/capture/recorders/webp-recorder"
+import { ImageFormat } from "@/capture/recorders/image-recorder"
+import { downloadBlob } from "@/capture/utils"
 
-export type MovieFormat = "webm" | "gif" | "mp4";
-export type OutputFormat = MovieFormat | ImageFormat;
+export type MovieFormat = "webm" | "gif" | "mp4"
+export type OutputFormat = MovieFormat | ImageFormat
 
 export type P5CaptureOptions = {
-  format?: OutputFormat;
-  framerate?: number;
-  bitrate?: number;
-  quality?: number;
-  width?: number;
-  height?: number;
-  duration?: number | null;
-  autoSaveDuration?: number | null;
-  baseFilename?: (date: Date) => string;
-  imageFilename?: (index: number) => string;
+  format?: OutputFormat
+  framerate?: number
+  bitrate?: number
+  quality?: number
+  width?: number
+  height?: number
+  duration?: number | null
+  autoSaveDuration?: number | null
+  baseFilename?: (date: Date) => string
+  imageFilename?: (index: number) => string
   beforeDownload?: (
     blob: Blob,
     context: { filename: string; format: OutputFormat },
     next: () => void,
-  ) => Promise<void> | void;
-  verbose?: boolean;
-};
+  ) => Promise<void> | void
+  verbose?: boolean
+}
 
 export type P5CaptureGlobalOptions = P5CaptureOptions & {
-  disableUi?: boolean;
-  disableScaling?: boolean;
-};
+  disableUi?: boolean
+  disableScaling?: boolean
+}
 
 const defaultOptions: P5CaptureGlobalOptions = {
   format: "webm",
@@ -45,7 +45,7 @@ const defaultOptions: P5CaptureGlobalOptions = {
   verbose: false,
   disableUi: false,
   disableScaling: false,
-};
+}
 
 export class P5Capture {
   protected recorder: Recorder | null = null;
@@ -54,41 +54,41 @@ export class P5Capture {
     | ((framerate?: number, encodingProgress?: number) => void)
     | null = null;
   protected mergedOptions: P5CaptureGlobalOptions | null = null;
-  protected p5: any;
+  protected p5: any
 
   protected static globalOptions: P5CaptureGlobalOptions = {};
   protected static instance: P5Capture | null = null;
 
   static setDefaultOptions(options: P5CaptureGlobalOptions) {
-    this.globalOptions = options;
+    this.globalOptions = options
   }
 
   static getInstance() {
-    return this.instance;
+    return this.instance
   }
 
   constructor() {
     if (P5Capture.instance) {
       throw new Error(
         "P5Capture is already instantiated. Consider using P5Capture.getInstance().",
-      );
+      )
     }
-    P5Capture.instance = this;
+    P5Capture.instance = this
   }
 
   get state() {
-    if (!this.recorder) return "idle";
-    return this.recorder.captureState;
+    if (!this.recorder) return "idle"
+    return this.recorder.captureState
   }
 
   async start(options: P5CaptureOptions = {}) {
     try {
-      this.mergeOptions(options);
-      this.recorder = await this.createRecorder();
-      this.recorder.start();
+      this.mergeOptions(options)
+      this.recorder = await this.createRecorder()
+      this.recorder.start()
     } catch (e) {
       if (e instanceof Error) {
-        console.warn(e.message);
+        console.warn(e.message)
       }
     }
   }
@@ -96,92 +96,92 @@ export class P5Capture {
   async stop() {
     try {
       if (!this.recorder) {
-        throw new Error("capturing is not started");
+        throw new Error("capturing is not started")
       }
-      this.recorder.stop();
+      this.recorder.stop()
     } catch (e) {
       if (e instanceof Error) {
-        console.warn(e.message);
+        console.warn(e.message)
       }
     }
   }
 
   initialize(p5: any) {
-    this.p5 = p5;
+    this.p5 = p5
 
-    this.mergeOptions();
+    this.mergeOptions()
     if (!this.mergedOptions) {
-      throw new Error("options are not set");
+      throw new Error("options are not set")
     }
 
     if (!this.mergedOptions.disableUi) {
       this.uiState = {
         format: this.mergedOptions.format,
         framerate: this.mergedOptions.framerate,
-      };
+      }
 
       const onClickRecordButton = (_: MouseEvent) => {
         switch (this.state) {
           case "idle":
-            this.start();
-            break;
+            this.start()
+            break
           case "capturing":
-            this.stop();
-            break;
+            this.stop()
+            break
         }
-      };
+      }
 
       const onChangeFormat = (e: Event) => {
-        const format = (e.target as HTMLSelectElement).value as OutputFormat;
-        this.uiState.format = format;
-      };
+        const format = (e.target as HTMLSelectElement).value as OutputFormat
+        this.uiState.format = format
+      }
 
       const onChangeFramerate = (e: Event) => {
-        const framerate = (e.target as HTMLInputElement).valueAsNumber;
+        const framerate = (e.target as HTMLInputElement).valueAsNumber
         if (framerate > 0) {
-          this.uiState.framerate = framerate;
+          this.uiState.framerate = framerate
         }
-      };
+      }
 
       const { updateUi } = createUi(document.body, this.uiState, {
         onClickRecordButton: onClickRecordButton.bind(this),
         onChangeFormat: onChangeFormat.bind(this),
         onChangeFramerate: onChangeFramerate.bind(this),
-      });
+      })
 
       this.updateUi = (framerate?: number, encodingProgress?: number) => {
-        if (!this.recorder) return;
+        if (!this.recorder) return
         updateUi(
           this.recorder.captureState,
           this.recorder.capturedCount,
           framerate,
           encodingProgress,
-        );
-      };
+        )
+      }
     }
 
     if (this.mergedOptions.disableScaling) {
-      this.p5.pixelDensity(1);
+      this.p5.pixelDensity(1)
     }
   }
 
   postDraw() {
     if (this.state === "capturing") {
-      const duration = this.mergedOptions?.duration;
-      const count = this.recorder?.capturedCount;
+      const duration = this.mergedOptions?.duration
+      const count = this.recorder?.capturedCount
       if (duration && count && count >= duration) {
-        this.stop();
+        this.stop()
       }
     }
-    this.recorder?.postDraw();
+    this.recorder?.postDraw()
   }
 
   protected async createRecorder() {
     if (!this.mergedOptions) {
-      throw new Error("options are not set");
+      throw new Error("options are not set")
     }
 
-    const canvas = this.p5.canvas;
+    const canvas = this.p5.canvas
     const {
       format,
       framerate,
@@ -193,8 +193,8 @@ export class P5Capture {
       baseFilename,
       imageFilename,
       beforeDownload,
-    } = this.mergedOptions;
-    let recorder;
+    } = this.mergedOptions
+    let recorder
 
     switch (format) {
       case "webm":
@@ -206,9 +206,9 @@ export class P5Capture {
             frameRate: framerate,
             quality,
           },
-        };
-        recorder = new WebmRecorder(canvas, webmRecorderOptions);
-        break;
+        }
+        recorder = new WebmRecorder(canvas, webmRecorderOptions)
+        break
 
       case "gif":
         const gifRecorderOptions: GifRecorderOptions = {
@@ -217,9 +217,9 @@ export class P5Capture {
           width,
           height,
           baseFilename,
-        };
-        recorder = new GifRecorder(canvas, gifRecorderOptions);
-        break;
+        }
+        recorder = new GifRecorder(canvas, gifRecorderOptions)
+        break
 
       case "mp4":
         const mp4RecorderOptions: Mp4RecorderOptions = {
@@ -228,10 +228,10 @@ export class P5Capture {
           width,
           height,
           baseFilename,
-        };
-        recorder = new Mp4Recorder(canvas, mp4RecorderOptions);
-        await recorder.initialize();
-        break;
+        }
+        recorder = new Mp4Recorder(canvas, mp4RecorderOptions)
+        await recorder.initialize()
+        break
 
       case "png":
         const pngRecorderOptions: PngRecorderOptions = {
@@ -240,9 +240,9 @@ export class P5Capture {
           autoSaveDuration,
           baseFilename,
           imageFilename,
-        };
-        recorder = new PngRecorder(canvas, pngRecorderOptions);
-        break;
+        }
+        recorder = new PngRecorder(canvas, pngRecorderOptions)
+        break
 
       case "jpg":
         const jpgRecorderOptions: JpgRecorderOptions = {
@@ -252,9 +252,9 @@ export class P5Capture {
           autoSaveDuration,
           baseFilename,
           imageFilename,
-        };
-        recorder = new JpgRecorder(canvas, jpgRecorderOptions);
-        break;
+        }
+        recorder = new JpgRecorder(canvas, jpgRecorderOptions)
+        break
 
       case "webp":
         const webpRecorderOptions: WebpRecorderOptions = {
@@ -264,54 +264,54 @@ export class P5Capture {
           autoSaveDuration,
           baseFilename,
           imageFilename,
-        };
-        recorder = new WebpRecorder(canvas, webpRecorderOptions);
-        break;
+        }
+        recorder = new WebpRecorder(canvas, webpRecorderOptions)
+        break
 
       default:
-        throw new Error(`invalid format: ${format}`);
+        throw new Error(`invalid format: ${format}`)
     }
 
     recorder.on("start", () => {
-      this.log("🎥 start capturing");
-      this.updateUi?.(framerate);
-    });
+      this.log("🎥 start capturing")
+      this.updateUi?.(framerate)
+    })
     recorder.on("stop", () => {
-      this.log("🎥 stop capturing");
-      this.updateUi?.(framerate);
-    });
-    recorder.on("added", () => this.updateUi?.(framerate));
+      this.log("🎥 stop capturing")
+      this.updateUi?.(framerate)
+    })
+    recorder.on("added", () => this.updateUi?.(framerate))
     recorder.on("progress", (progress) => {
-      const p = Math.round(progress * 100);
-      this.log(`⏳ encoding ${p}%`);
-      this.updateUi?.(framerate, progress);
-    });
+      const p = Math.round(progress * 100)
+      this.log(`⏳ encoding ${p}%`)
+      this.updateUi?.(framerate, progress)
+    })
     recorder.on("finished", (blob, filename) => {
-      this.log("✅ done");
+      this.log("✅ done")
       if (beforeDownload) {
         beforeDownload(blob, { filename, format }, () => {
-          downloadBlob(blob, filename);
-        });
+          downloadBlob(blob, filename)
+        })
       } else {
-        downloadBlob(blob, filename);
+        downloadBlob(blob, filename)
       }
-      this.updateUi?.(framerate);
-    });
+      this.updateUi?.(framerate)
+    })
     recorder.on("segmented", (blob, filename) => {
-      this.log(`💾 save segmented file: ${filename}`);
+      this.log(`💾 save segmented file: ${filename}`)
       if (beforeDownload) {
         beforeDownload(blob, { filename, format }, () => {
-          downloadBlob(blob, filename);
-        });
+          downloadBlob(blob, filename)
+        })
       } else {
-        downloadBlob(blob, filename);
+        downloadBlob(blob, filename)
       }
-    });
+    })
     recorder.on("error", (error) => {
-      console.error(error.message);
-    });
+      console.error(error.message)
+    })
 
-    return recorder;
+    return recorder
   }
 
   protected mergeOptions(options: P5CaptureOptions = {}) {
@@ -320,12 +320,12 @@ export class P5Capture {
       ...P5Capture.globalOptions,
       ...this.uiState,
       ...options,
-    };
+    }
   }
 
   protected log(message: string) {
     if (this.mergedOptions?.verbose) {
-      console.log(message);
+      console.log(message)
     }
   }
 }

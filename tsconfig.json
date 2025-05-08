@@ -2,6 +2,9 @@
   "files": [],
   "compilerOptions": {
         "noImplicitAny": false,
+        "forceConsistentCasingInFileNames": true,
+        "verbatimModuleSyntax": false
+
   },
   "references": [
     {

@@ -6,7 +6,7 @@ function windowResized() {
 	resizeCanvas(usefulWidth, usefulHeight)
 }
 
-import { P5Capture } from "./capture/p5.capture"
+import { P5Capture } from "../p5.capture-main/src/p5.capture"
 
 
 function fallbacksetup(isLoop) {

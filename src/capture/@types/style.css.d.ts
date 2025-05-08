@@ -1,4 +1,4 @@
-declare module "@/style.css" {
-  const style: string;
-  export default style;
+declare module "@/capture/style.css" {
+  const style: string
+  export default style
 }
