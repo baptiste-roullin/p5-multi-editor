@@ -4,7 +4,7 @@ import type global from 'node_modules/@types/p5/global.d.ts'
 import p5 from "p5"
 
 export const usefulWidth = window.innerWidth * .88
-export const usefulHeight = window.innerHeight * .90
+export const usefulHeight = window.innerHeight
 
 function windowResized() {
 	resizeCanvas(usefulWidth, usefulHeight)
