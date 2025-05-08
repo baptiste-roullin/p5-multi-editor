@@ -22,6 +22,8 @@ The motivation is to provide the best of both worlds between the "default" mode 
 
 ## How it works
 
+Basically, the tool runs p5 in global, except it manually injects P5 objects in `window` to enable switching between sketches.
+
 Every file in the p5 folder must
 
 - be a .ts file
