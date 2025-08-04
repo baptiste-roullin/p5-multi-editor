@@ -8,7 +8,9 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false"
   },
   "dependencies": {
-    "p5": "2.0.1",
+    "@sindresorhus/slugify": "^2.2.1",
+    "dat.gui": "^0.7.9",
+    "p5": "*",
     "vue": "*",
     "vue-router": "*"
   },

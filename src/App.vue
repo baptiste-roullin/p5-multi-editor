@@ -9,6 +9,7 @@ import { cleanedList } from './cleanList'
 
 import shellComponent from "@/shellComponent.vue"
 
+import { refreshKey } from "./router"
 
 </script>
 
@@ -22,7 +23,7 @@ import shellComponent from "@/shellComponent.vue"
   </header>
 
   <main>
-    <shellComponent :fileName="cleanedList[0]" />
+    <shellComponent :fileName="cleanedList[0]" :key="refreshKey" />
   </main>
 </template>
 

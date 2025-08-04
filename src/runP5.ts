@@ -19,7 +19,7 @@ function fallbacksetup(isLoop) {
 	//must be the last line
 	setLoop()
 }
-export async function globalInit(p5Primitives, isLoop = true, draw) {
+export async function globalInit(p5Primitives, isLoop = true, slugifiedName) {
 
 	for (const primitive in p5Primitives) {
 		if (typeof p5Primitives[primitive] === "function") {
@@ -37,10 +37,6 @@ export async function globalInit(p5Primitives, isLoop = true, draw) {
 		window['windowResized'] = null
 		window['windowResized'] = windowResized
 	}
-	const main = document.querySelector("body main")
-	const canvas = document.querySelector("main canvas")
-	if (canvas) {
-		main!.removeChild(canvas)
-	}
-	await new p5(null, "main")
+
+	await new p5(null, `sketch-${slugifiedName}`)
 }

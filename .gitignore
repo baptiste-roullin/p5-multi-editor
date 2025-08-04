@@ -21,4 +21,3 @@ coverage
 *.sw?
 *.vscode
 files.json
-sketches/*.ts
