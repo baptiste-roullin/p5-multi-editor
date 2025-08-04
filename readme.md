@@ -30,7 +30,7 @@ For one sketch:
 
 1. `draw()`and other function exports are imported from your file in the `sketches` folder and added to the global `window` object.
 2. If no `setup` is present, a basic fallback is provided.
-2. P5 is called, detects these functions ([see rules](https://github.com/processing/p5.js/wiki/Global-and-instance-mode#when-is-global-mode-assumed)), runs the sketch and inserts a `canvas` in `index.html
+2. P5 is called, detects these functions ([see rules](https://github.com/processing/p5.js/wiki/Global-and-instance-mode#when-is-global-mode-assumed)), runs the sketch and inserts a `canvas` in `index.html`.
 
 Adding several sketches in the mix:
 
