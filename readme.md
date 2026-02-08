@@ -9,7 +9,7 @@ The motivation is to provide the best of both worlds between the "default" mode 
 
 - Like [in the web editor](https://editor.p5js.org/), you can write concise code and quickly experiment with new sketches.
 - Like in instance mode, you get inline documentation (by TS typings) and the comfort of a full IDE.
-- Screenshot and video recording
+- Screenshot and video recording.
 - Instant parameters tweaking, via Dat GUI support.
 
 ![](screenshot.png)
@@ -19,11 +19,11 @@ The motivation is to provide the best of both worlds between the "default" mode 
 1. Clone.
 2. Run `npm install`.
 5. Run `npm run dev` to launch the app and `npm run update-files` to hot-reload files.
-6. Add .js or .ts files in the folder named p5. See sample files for examples.
+6. Add .js or .ts files in the folder named sketches. See sample files for examples.
 
-Every file in the `sketches` folder must
+Every file in the `sketches` folder must:
 
-- include a `draw` function
+- include a `draw` or `setup` function.
 - Export your functions with a named export. Basically every P5 global function listed [here](https://github.com/processing/p5.js/blob/main/src/core/friendly_errors/fes_core.js#L80) should work, as long as you export them.
 
 ## How it works
@@ -41,21 +41,22 @@ Everytime  you click on a sketch in the left bar, `draw()`, `setup()` and other 
 
 ## Dat GUI support
 
-The tool has partial declarative support for [dat GUI](https://github.com/cyrilf/vue-dat-gui/). A sketch must exports a object named `vars`, for instance:
+The tool has partial declarative support for [dat GUI](https://github.com/cyrilf/vue-dat-gui/). A sketch must export a object named `vars`, for instance:
 
 ```
-export let vars = {
+export const vars = {
 	folderExample: {
 		checkboxExample: true
 	},
 ```
 
-Each sub-object will be considered a folder in the Dat GUI sense. Every value in that object will be added to that folder as widgets. Each key will be used as label for the widget.
+Each sub-object will be considered a folder in the Dat GUI sense. Every values in that object will be added to that folder as widgets. Each key will be used as labels for each widget.
 
 The type of value automatically determines the type of widget:
 
 - DatBoolean : expects a boolean to display a checkbox
 - DatButton: expects a function to display a button
+- DatString: expects a string
 - DatNumber: expects an object with:
 ```
 {
@@ -65,14 +66,13 @@ The type of value automatically determines the type of widget:
 	step: number
 }
 ```
-- DatSelect: expects an object
+- DatSelect: expects an object with;
 ```
 {
 	currentValue: string
 	options: string[]
 }
 ```
-- DatString: expects a string
 - No support for color picker.
 
 

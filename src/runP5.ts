@@ -24,9 +24,12 @@ export async function runP5(imports: Ref<P5Vue.Imports>, sketchName: string) {
 		}
 	}
 
-	if (!(Object.hasOwn(imports.value, "setup"))) {
+	if (
+		!(Object.hasOwn(imports.value, "setup")) || !(Object.hasOwn(imports.value, "draw"))
+	) {
+		throw "no draw or setup functions found"
 		//window.setup = null
-		window.setup = fallbacksetup
+		//window.setup = fallbacksetup
 	}
 
 	if (!(Object.hasOwn(imports.value, "windowResized"))) {
