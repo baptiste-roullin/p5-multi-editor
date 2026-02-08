@@ -1,0 +1,122 @@
+/* color palette from <https://github.com/vuejs/theme> */
+:root {
+
+
+  --color-slate-50: oklch(0.984 0.003 247.858);
+  --color-slate-100: oklch(0.968 0.007 247.896);
+  --color-slate-200: oklch(0.929 0.013 255.508);
+  --color-slate-300: oklch(0.869 0.022 252.894);
+  --color-slate-400: oklch(0.704 0.04 256.788);
+  --color-slate-500: oklch(0.554 0.046 257.417);
+  --color-slate-600: oklch(0.446 0.043 257.281);
+  --color-slate-700: oklch(0.372 0.044 257.287);
+  --color-slate-800: oklch(0.279 0.041 260.031);
+  --color-slate-900: oklch(0.208 0.042 265.755);
+  --color-slate-950: oklch(0.129 0.042 264.695);
+
+
+  --white: #ffffff;
+  --white-soft: #f8f8f8;
+  --white-mute: #f2f2f2;
+
+  --black: #181818;
+  --black-soft: #222222;
+  --black-mute: #282828;
+
+  --indigo: #2c3e50;
+
+  --divider-light-1: rgba(60, 60, 60, 0.29);
+  --divider-light-2: rgba(119, 119, 119, 0.5);
+  --divider-dark-1: rgba(84, 84, 84, 0.65);
+  --divider-dark-2: rgba(84, 84, 84, 0.48);
+
+  --text-light-1: var(--white-mute);
+  --text-light-2: rgba(60, 60, 60, 0.66);
+  --text-dark-1: var(--white);
+  --text-dark-2: rgba(235, 235, 235, 0.64);
+
+}
+
+  :root {
+    --color-bg-dark: var(--color-slate-950);
+    --color-bg-dark-soft: var(--black-soft);
+    --color-bg-dark-mute: var(--black-mute);
+
+      --color-bg-light: var(--white);
+      --color-bg-light-soft: var(--white-soft);
+      --color-bg-light-mute: var(--white-mute);
+
+    --color-border: var(--divider-dark-2);
+    --color-border-hover: var(--divider-dark-1);
+
+    --color-heading: var(--text-dark-1);
+    --color-text-light: var(--white-mute);
+    --color-text-dark: var(--black-mute);
+
+
+  }
+
+
+
+
+
+
+
+html,
+body,
+main,
+#app {
+  height: 100%;
+ background: var(--color-bg-dark);
+
+}
+body {
+  margin: 0;
+  background-color: var(--color-slate-900);
+  min-height: 100vh;
+  color: var(--color-slate-200);
+  transition:
+    color 0.5s,
+    background-color 0.5s;
+  line-height: 1.6;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  font-size: 12px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (min-width: 1024px) {
+#app {
+
+  display: flex;
+  flex-direction: row;
+}
+
+
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+
+
+
