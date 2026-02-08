@@ -3,26 +3,19 @@ import "p5/global"
 
 import p5 from "p5"
 import type { P5Vue } from '../index.d.ts'
-import slugify from '@sindresorhus/slugify'
 import type { Ref } from 'vue'
 
-export const usefulWidth = window.innerWidth * .76
-export const usefulHeight = window.innerHeight
-
 function windowResized() {
-	resizeCanvas(usefulWidth, usefulHeight)
+	resizeCanvas(window.innerWidth * .74, window.innerHeight)
 }
 
-
 function fallbacksetup() {
-	createCanvas(usefulWidth, usefulHeight, undefined)
+	createCanvas(window.innerWidth * .74, window.innerHeight, undefined)
 	//createCanvas(480, 480, "webgl")
 	frameRate(10)
 }
 
-
 export async function runP5(imports: Ref<P5Vue.Imports>, sketchName: string) {
-
 
 	for (const sketchImport in imports.value) {
 		if (typeof imports.value[sketchImport] === "function") {

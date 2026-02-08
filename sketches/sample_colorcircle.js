@@ -1,4 +1,3 @@
-import { usefulWidth, usefulHeight } from "../src/runP5"
 let angle = 0
 let centerX, centerY
 let currentColour, targetColour
@@ -19,7 +18,7 @@ const colours = [
 ]
 
 export function setup() {
-	createCanvas(usefulWidth, usefulHeight, undefined, document.querySelector("canvas"))
+	createCanvas(window.innerWidth * .74, window.innerHeight, undefined, document.querySelector("canvas"))
 	background(backgroundColour)
 	centerX = width / 2
 	centerY = height / 2
