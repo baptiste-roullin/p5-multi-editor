@@ -9,7 +9,7 @@ The motivation is to provide the best of both worlds between the "default" mode 
 
 - Like [in the web editor](https://editor.p5js.org/), you can write concise code and quickly experiment with new sketches.
 - Like in instance mode, you get inline documentation (by TS typings) and the comfort of a full IDE.
-- screenshot and video recording
+- Screenshot and video recording
 - Instant parameters tweaking, via Dat GUI support.
 
 ![](screenshot.png)

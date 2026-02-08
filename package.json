@@ -4,8 +4,7 @@
   "type": "module",
   "scripts": {
     "update-files": "node ./src/updateFilesList/update.ts --experimental-strip-types",
-    "dev": "vite",
-    "build": "vite build"
+    "dev": "vite"
   },
   "dependencies": {
     "p5": "^2.2.0",
