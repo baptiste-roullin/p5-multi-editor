@@ -6,7 +6,7 @@ import { extname, parse } from 'node:path'
 (async function () {
 	function isJSFile(extname: string) {
 		const check = /.(t|j)s$/.test(extname)
-		if (!check) { throw "ERROR\nnon-Javascript file was detected in the folder\nENDERROR" }
+		//if (!check) { throw "ERROR\nnon-Javascript file was detected in the folder\nENDERROR" }
 		return check
 	}
 
