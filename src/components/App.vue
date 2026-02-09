@@ -90,10 +90,8 @@ main {
   flex-direction: row;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+
+
 
 nav {
   height: 100%;
@@ -137,7 +135,7 @@ nav a:hover {
 
 
 
-@media (min-width: 1100px) {
+@media (min-width: 1024px) {
 
 
   nav {
@@ -152,6 +150,22 @@ nav a:hover {
   .logo {
     margin: 0 2rem 0 0;
   }
+}
 
+
+@media (max-width: 1023px) {
+
+
+  #app {
+    flex-direction: column;
+  }
+
+  main {
+    flex-direction: column;
+  }
+
+  .nav-left {
+    flex-direction: row;
+  }
 }
 </style>

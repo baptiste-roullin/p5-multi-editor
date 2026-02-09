@@ -66,6 +66,9 @@ let varItem = store.vars[folder][label]
 			}
 		}
 
+
+
+
 		select,
 		input {
 			background-color: var(--color-bg-light-mute);
@@ -115,12 +118,21 @@ let varItem = store.vars[folder][label]
 	}
 }
 
-.nav-right {
-	margin-top: 1rem;
-	width: 12vw;
+@media (max-width: 1023px) {
+	#app .nav-right {
+		.group.group--main>ul {
+			display: flex;
+			flex-direction: row;
+		}
+	}
 }
 
-
-
-@media (min-width: 1100px) {}
+@media (max-width: 700px) {
+	#app .nav-right {
+		.group.group--main>ul {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+}
 </style>

@@ -15,8 +15,20 @@
 </template>
 
 <style>
-.sketch-container {
-	width: 76vw;
-	height: 100%;
+@media (min-width: 1024px) {
+
+	#sketch-container {
+		width: 76vw;
+		height: 100%;
+	}
+}
+
+@media (max-width: 1023px) {
+
+	#sketch-container {
+		width: 100vw;
+		height: 100%;
+	}
 }
 </style>
+

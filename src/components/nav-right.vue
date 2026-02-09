@@ -37,6 +37,40 @@ const store = p5Store()
 .nav-right {
 	display: flex;
 	flex-direction: column;
-	gap: 1em
+	gap: 1em;
+	margin-top: 1rem;
+	width: 12vw;
+}
+
+
+
+@media (max-width: 1023px) {
+
+	.nav-right {
+		flex-direction: row;
+		width: 100vw;
+		position: absolute;
+
+		bottom: 20px;
+
+		.dat-gui-wrapper {
+			flex-direction: row;
+		}
+	}
+}
+
+@media (max-width: 700px) {
+
+	.nav-right {
+		flex-direction: column;
+		width: 100vw;
+		position: absolute;
+
+		bottom: 20px;
+
+		.dat-gui-wrapper {
+			flex-direction: column;
+		}
+	}
 }
 </style>
