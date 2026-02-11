@@ -24,20 +24,26 @@ The motivation is to provide the best of both worlds between the "default" mode 
 Every file in the `sketches` folder must:
 
 - include a `draw` or `setup` function.
-- Export your functions with a named export. Basically every P5 global function listed [here](https://github.com/processing/p5.js/blob/main/src/core/friendly_errors/fes_core.js#L80) should work, as long as you export them.
+- Export your p5 native functions with a named export. Basically every global function listed [here](https://github.com/processing/p5.js/blob/main/src/core/friendly_errors/fes_core.js#L80) should work, as long as you export them.
 
-## How it works
+## Build as standalone
 
-Every file in the p5 folder must at least have a `draw` function, exported with a named export.
+Run `npm run build` to get a standalone app with all sketches preserved. Caveats:
 
-Everytime  you click on a sketch in the left bar, `draw()`, `setup()` and other primitives are added to the global `window` object (replacing potential previous occurences) and the `p5()` constructor is called. This constructor picks these two function and execute them.
+- Heavy (about 2MB of JS)
+- It should work on any server, at root level or in a subfolder, but opening the `index.html` file in your browser will not work. Host the app somewhere or run a local server (eg. run `npx serve`).
+- Hot reloading and adding new sketches will not work.
 
 ## Warnings
 
+- Known problems
+	- Cannot load remote fonts
+	- Potential problems when switching from 2D-rendered sketch to WebGL-rendered sketch.
 - Not tested with so many p5 files or the whole p5 API.
 - p5.js v2 only
 - No cross-platform testing
 - No performance test, especially with heavy files (WebGL and such).
+
 
 ## Dat GUI support
 
@@ -76,6 +82,9 @@ The type of value automatically determines the type of widget:
 - No support for color picker.
 
 
+## How it works
+
+Everytime  you click on a sketch in the left bar, `draw()`, `setup()` and other primitives are added to the global `window` object (replacing potential previous occurences) and the `p5()` constructor is called. This constructor picks these two function and execute them.
 
 ## Credits
 

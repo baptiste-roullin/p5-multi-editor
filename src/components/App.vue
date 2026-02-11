@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch, watchEffect, type Ref } from 'vue'
+import { ref, watch, type Ref } from 'vue'
 import { useRoute } from 'vue-router'
 import slugify from '@sindresorhus/slugify'
 
@@ -16,28 +16,40 @@ import { importedSketches } from '@/main'
 const env = import.meta.env.VITE_USER_NODE_ENV
 
 const defaultSketchName = (cleanedList[0])
-let sketchName = ref(defaultSketchName)
+let sketchName = ref(defaultSketchName.name)
 const route = useRoute()
 let activeSketch: Ref<P5Vue.Import> = ref({})
 let vars = ref({})
 let hasVars = ref(false)
 
+function customMatcher(s: string) {
+  const fullMatch = s.match(/\/.*(\/.*)$/)! // matching "/sketchName"
+  const match = fullMatch.at(-1)
+  if (!match) {
+    throw "no match"
+  }
+
+  if (match === "/") return defaultSketchName.name
+  else return match.replace("/", "")
+}
+
 watch(
-  () => route.name,
-  (routeName) => {
+  () => { return { fullPath: route.fullPath, routeName: route.name } },
+  ({ fullPath, routeName }) => {
 
-    if (env === "testing") {
-      test()
-    }
     sketchName.value = slugify(String(routeName))
-    const importedSketchesRaw: P5Vue.Imports = importedSketches
 
-    if (!importedSketchesRaw.hasOwnProperty(sketchName.value)) {
+    if (import.meta.env.PROD) { //stripped on build
+      sketchName.value = slugify(customMatcher(fullPath))
+    }
+
+
+    if (!importedSketches.hasOwnProperty(sketchName.value)) {
       throw "no sketch matching this route"
     }
-    const importedSketch = importedSketchesRaw[sketchName.value]!
+    const importedSketch = importedSketches[sketchName.value]!
 
-    if (!importedSketchesRaw[sketchName.value]!) {
+    if (!importedSketches[sketchName.value]!) {
       throw "unable to load sketch"
     }
     activeSketch.value = importedSketch
@@ -53,7 +65,9 @@ watch(
     }
 
     runP5(activeSketch, slugify(sketchName.value))
-
+    if (env === "testing") {
+      test()
+    }
   }
 )
 
