@@ -9,8 +9,10 @@ The motivation is to provide the best of both worlds between the "default" mode 
 
 - Like [in the web editor](https://editor.p5js.org/), you can write concise code and quickly experiment with new sketches.
 - Like in instance mode, you get inline documentation (by TS typings) and the comfort of a full IDE.
-- Screenshot and video recording.
+- Screenshot and video recording
 - Instant parameters tweaking, via Dat GUI support.
+
+(Try it on Stackblitz)[https://stackblitz.com/~/github.com/baptiste-roullin/p5-multi-editor].
 
 ![](screenshot.png)
 
@@ -19,50 +21,43 @@ The motivation is to provide the best of both worlds between the "default" mode 
 1. Clone.
 2. Run `npm install`.
 5. Run `npm run dev` to launch the app and `npm run update-files` to hot-reload files.
-6. Add .js or .ts files in the folder named sketches. See sample files for examples.
+6. Add .js or .ts files in the folder named p5. See sample files for examples.
 
-Every file in the `sketches` folder must:
+Every file in the `sketches` folder must
 
-- include a `draw` or `setup` function.
-- Export your p5 native functions with a named export. Basically every global function listed [here](https://github.com/processing/p5.js/blob/main/src/core/friendly_errors/fes_core.js#L80) should work, as long as you export them.
+- include a `draw` function
+- Export your functions with a named export. Basically every P5 global function listed [here](https://github.com/processing/p5.js/blob/main/src/core/friendly_errors/fes_core.js#L80) should work, as long as you export them.
 
-## Build as standalone
+## How it works
 
-Run `npm run build` to get a standalone app with all sketches preserved. Caveats:
+Every file in the p5 folder must at least have a `draw` function, exported with a named export.
 
-- Heavy (about 2MB of JS)
-- It should work on any server, at root level or in a subfolder, but opening the `index.html` file in your browser will not work. Host the app somewhere or run a local server (eg. run `npx serve`).
-- Hot reloading and adding new sketches will not work.
+Everytime  you click on a sketch in the left bar, `draw()`, `setup()` and other primitives are added to the global `window` object (replacing potential previous occurences) and the `p5()` constructor is called. This constructor picks these two function and execute them.
 
 ## Warnings
 
-- Known problems
-	- Cannot load remote fonts
-	- Potential problems when switching from 2D-rendered sketch to WebGL-rendered sketch.
 - Not tested with so many p5 files or the whole p5 API.
 - p5.js v2 only
 - No cross-platform testing
 - No performance test, especially with heavy files (WebGL and such).
 
-
 ## Dat GUI support
 
-The tool has partial declarative support for [dat GUI](https://github.com/cyrilf/vue-dat-gui/). A sketch must export a object named `vars`, for instance:
+The tool has partial declarative support for [dat GUI](https://github.com/cyrilf/vue-dat-gui/). A sketch must exports a object named `vars`, for instance:
 
 ```
-export const vars = {
+export let vars = {
 	folderExample: {
 		checkboxExample: true
 	},
 ```
 
-Each sub-object will be considered a folder in the Dat GUI sense. Every values in that object will be added to that folder as widgets. Each key will be used as labels for each widget.
+Each sub-object will be considered a folder in the Dat GUI sense. Every value in that object will be added to that folder as widgets. Each key will be used as label for the widget.
 
 The type of value automatically determines the type of widget:
 
 - DatBoolean : expects a boolean to display a checkbox
 - DatButton: expects a function to display a button
-- DatString: expects a string
 - DatNumber: expects an object with:
 ```
 {
@@ -72,19 +67,17 @@ The type of value automatically determines the type of widget:
 	step: number
 }
 ```
-- DatSelect: expects an object with;
+- DatSelect: expects an object
 ```
 {
 	currentValue: string
 	options: string[]
 }
 ```
+- DatString: expects a string
 - No support for color picker.
 
 
-## How it works
-
-Everytime  you click on a sketch in the left bar, `draw()`, `setup()` and other primitives are added to the global `window` object (replacing potential previous occurences) and the `p5()` constructor is called. This constructor picks these two function and execute them.
 
 ## Credits
 

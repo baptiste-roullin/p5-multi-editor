@@ -21,7 +21,6 @@ coverage
 *.sw?
 *.code-workspace
 *.vscode
-files.json
 todo.md
 .env
 doc.md
