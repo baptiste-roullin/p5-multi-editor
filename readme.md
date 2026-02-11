@@ -1,4 +1,5 @@
-# WARNING: VERY MUCH IN A BETA PHASE
+> [!WARNING]
+> WARNING: VERY MUCH IN BETA PHASE
 
 
 # A p5.js multi editor
@@ -28,11 +29,13 @@ Every file in the `sketches` folder must
 - include a `draw` function
 - Export your functions with a named export. Basically every P5 global function listed [here](https://github.com/processing/p5.js/blob/main/src/core/friendly_errors/fes_core.js#L80) should work, as long as you export them.
 
-## How it works
+## Build as a standalone app
 
-Every file in the p5 folder must at least have a `draw` function, exported with a named export.
+Run `npm run build` to make a standalone app with all sketches preserved. Caveats:
+- It should run on any server, at domain level or in a subfolder. But it will not work locally by opening `index.html` in the `dist` folder. Host it somewhere or run a local dev server (eg. `npx serve dist`).
+- ~2Mb of Javascript (media encoders sure (are heavy)[https://pkg-size.dev/webm-writer h264-mp4-encoder gif.js]).
+- Hot-reloading and adding new sketches will not work.
 
-Everytime  you click on a sketch in the left bar, `draw()`, `setup()` and other primitives are added to the global `window` object (replacing potential previous occurences) and the `p5()` constructor is called. This constructor picks these two function and execute them.
 
 ## Warnings
 
@@ -77,7 +80,9 @@ The type of value automatically determines the type of widget:
 - DatString: expects a string
 - No support for color picker.
 
+## How it works
 
+Everytime  you click on a sketch in the left bar, `draw()`, `setup()` and other primitives are added to the global `window` object (replacing potential previous occurences) and the `p5()` constructor is called. This constructor picks these two function and execute them.
 
 ## Credits
 
