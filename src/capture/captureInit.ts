@@ -1,5 +1,5 @@
 import p5 from "p5"
-import { P5Capture } from "@/capture/Capture"
+import { P5Capture } from "@/capture/capture"
 
 
 const p5Capture = new P5Capture()

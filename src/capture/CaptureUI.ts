@@ -1,5 +1,5 @@
 import type { CaptureState } from "@/capture/recorders/base"
-import type { OutputFormat } from "@/capture/Capture"
+import type { OutputFormat } from "@/capture/capture"
 
 export const getFrameCountStr = (count: number) => {
   return `${count}`.padStart(7, "0")
