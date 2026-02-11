@@ -1,4 +1,4 @@
-import { createH264MP4Encoder, type H264MP4Encoder } from "h264-mp4-encoder"
+import { createH264MP4Encoder, type H264MP4Encoder } from "../../../node_modules/h264-mp4-encoder/embuild/dist/h264-mp4-encoder.web.js"
 import { Recorder, type RecorderOptions } from "@/capture/recorders/base"
 import { omitUndefinedProperty } from "@/capture/utils"
 
