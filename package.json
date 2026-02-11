@@ -3,9 +3,12 @@
   "version": "0.3.0",
   "type": "module",
   "scripts": {
-    "update-files": "node ./src/updateFilesList/update.ts --experimental-strip-types",
+    "update-files": "node ./src/updateFilesList/update.ts",
     "dev": "vite",
     "build": "vite build"
+  },
+  "engines": {
+    "node": ">=24"
   },
   "dependencies": {
     "p5": "^2.2.0",

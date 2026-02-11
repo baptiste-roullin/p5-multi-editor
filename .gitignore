@@ -24,4 +24,5 @@ coverage
 todo.md
 .env
 doc.md
+.nvmrc
 sketches/inspi*
