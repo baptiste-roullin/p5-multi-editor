@@ -49,7 +49,7 @@ const store = p5Store()
 	.nav-right {
 		flex-direction: row;
 		width: 100vw;
-		position: absolute;
+
 
 		bottom: 20px;
 
@@ -64,7 +64,7 @@ const store = p5Store()
 	.nav-right {
 		flex-direction: column;
 		width: 100vw;
-		position: absolute;
+
 
 		bottom: 20px;
 
