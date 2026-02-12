@@ -13,7 +13,7 @@ The motivation is to provide the best of both worlds between the "default" mode 
 - Screenshot and video recording
 - Instant parameters tweaking, via Dat GUI support.
 
-(Demo here)[https://misc.toutcequibouge.net/p5-multi-editor/dist/sample_datGUI].
+[https://misc.toutcequibouge.net/p5-multi-editor/dist/sample_datGUI](Demo here)
 
 ![](screenshot.png)
 
