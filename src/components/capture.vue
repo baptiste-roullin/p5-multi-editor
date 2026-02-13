@@ -58,8 +58,8 @@
 	input,
 	select {
 		border-radius: 0;
-		background-color: var(--color-bg-light-mute);
-		color: var(--color-text-dark)
+		background-color: var(--color-slate-800);
+		color: var(--text-light-1);
 	}
 
 
@@ -68,15 +68,6 @@
 	}
 
 
-	#p5c-btn {
-		position: relative;
-		width: 22px;
-		height: 22px;
-		border: none;
-		border-radius: 50%;
-		cursor: pointer;
-		background: var(--color-slate-200);
-	}
 
 	.p5c-options {
 		display: flex;
@@ -119,6 +110,16 @@
 		padding: 2px 0 4px 2px
 	}
 
+	#p5c-btn {
+		position: relative;
+		width: 22px;
+		height: 22px;
+		border: none;
+		border-radius: 50%;
+		cursor: pointer;
+		background-color: var(--black);
+	}
+
 
 	#p5c-btn:after {
 		position: absolute;
@@ -129,7 +130,7 @@
 		width: 10px;
 		height: 10px;
 		border-radius: 50%;
-		background: #f56565;
+		background-color: #107b9c;
 		transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 	}
 
@@ -139,12 +140,12 @@
 	}
 
 	#p5c-btn:disabled {
-		background: #a0aec0;
+		background-color: #a0aec0;
 		cursor: not-allowed;
 	}
 
 	#p5c-btn:disabled::after {
-		background: #718096;
+		background-color: #718096;
 	}
 
 	#p5c-btn:focus-visible {

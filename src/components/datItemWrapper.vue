@@ -66,14 +66,15 @@ let varItem = store.vars[folder][label]
 			}
 		}
 
-
-
-
 		select,
 		input {
-			background-color: var(--color-bg-light-mute);
-			color: var(--color-text-dark);
-			accent-color: var(--number-color);
+			background-color: var(--color-slate-800);
+			color: var(--text-light-1);
+			accent-color: #0c5971;
+		}
+
+		.slider {
+			background-image: linear-gradient(90deg, #0c5971, #107b9c);
 		}
 
 		.toggle-button {
@@ -102,8 +103,9 @@ let varItem = store.vars[folder][label]
 				text-decoration: underline;
 				text-decoration-color: var(--number-color);
 				display: block;
-				padding-left: 70px;
 				cursor: pointer;
+				line-height: 1.6em;
+				text-align: center;
 			}
 
 			.control-item {
@@ -111,7 +113,7 @@ let varItem = store.vars[folder][label]
 
 				.control>input[type="number"] {
 					/* color: var(--number-color); */
-					color: var(--color-text-dark);
+					color: var(--text-light-1);
 				}
 			}
 		}

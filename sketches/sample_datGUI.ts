@@ -41,6 +41,12 @@ export let vars = {
 
 let y = 50
 
+export function setup() {
+	createCanvas(window.innerWidth * .74, window.innerHeight, undefined)
+	//createCanvas(480, 480, "webgl")
+	frameRate(10)
+}
+
 export function draw() {
 	background(0)
 	const centerX = width / 2

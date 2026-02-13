@@ -53,6 +53,7 @@ export let vars = {
 	folderExample: {
 		checkboxExample: true
 	},
+}
 ```
 
 Each sub-object will be considered a folder in the Dat GUI sense. Every value in that object will be added to that folder as widgets. Each key will be used as label for the widget.
