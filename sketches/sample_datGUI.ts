@@ -2,7 +2,7 @@ const selectOptions = ["50", "60", "70", "80"]
 const selectCurrentValue = selectOptions[0]
 
 export let vars = {
-	slider: {
+	Slider: {
 		red: {
 			value: 255,
 			min: 1,
@@ -19,21 +19,27 @@ export let vars = {
 			value: 0,
 			min: 1,
 			max: 255,
-			step: 1
+			step: 1,
+			showSlider: false
 		},
 	},
-	select: {
+	"color picker": {
+		color: {
+			hex: "#ffff00"
+		}
+	},
+	Select: {
 		xPosition: { currentValue: selectCurrentValue, options: selectOptions }
 	},
-	button: {
+	Button: {
 		yPosition: () => {
 			y = y + 20
 		}
 	},
-	checkbox: {
+	Checkbox: {
 		visibility: true
 	},
-	string: {
+	String: {
 		title: "bonjour"
 	}
 }
@@ -42,7 +48,7 @@ export let vars = {
 let y = 50
 
 export function setup() {
-	createCanvas(window.innerWidth * .74, window.innerHeight, undefined)
+	createCanvas(window.innerWidth * .72, window.innerHeight, undefined)
 	//createCanvas(480, 480, "webgl")
 	frameRate(10)
 }
@@ -51,9 +57,12 @@ export function draw() {
 	background(0)
 	const centerX = width / 2
 	const centerY = height / 2
-	let alpha = (vars.checkbox.visibility ? 255 : 0)
-	fill(vars.slider.red.value, vars.slider.green.value, vars.slider.blue.value, alpha)
-	rect(centerX - Number(vars.select.xPosition.currentValue), centerY - y, 100, 100)
+	let alpha = (vars.Checkbox.visibility ? 255 : 0)
+	fill(vars.Slider.red.value, vars.Slider.green.value, vars.Slider.blue.value, alpha)
+	rect(centerX - Number(vars.Select.xPosition.currentValue), centerY - y, 100, 100)
+	fill(color(vars['color picker'].color.hex))
+	circle(10, 10, 20)
+
 	textSize(50)
-	text(vars.string.title, centerX - 50, centerY - 100)
+	text(vars.String.title, centerX - 50, centerY - 100)
 }

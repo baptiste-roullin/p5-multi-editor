@@ -46,40 +46,73 @@ Run `npm run build` to make a standalone app with all sketches preserved. Caveat
 
 ## Dat GUI support
 
-The tool has partial declarative support for [dat GUI](https://github.com/cyrilf/vue-dat-gui/). A sketch must exports a object named `vars`, for instance:
+The tool has partial declarative support for [dat GUI](https://github.com/cyrilf/vue-dat-gui/). A sketch must exports a object named `vars`. Each sub-object will be considered a folder in the Dat GUI sense. Every value in that object will be added to that folder as widgets. Each key will be used as label for the widget.
+
+For instance, this will generate a folder named "example  of folder" with a checkbox labelled "example of checkbox":
 
 ```
 export let vars = {
-	folderExample: {
-		checkboxExample: true
+	"example of folder ": {
+		"example of checkbox": true
 	},
 }
 ```
 
 Each sub-object will be considered a folder in the Dat GUI sense. Every value in that object will be added to that folder as widgets. Each key will be used as label for the widget.
 
-The type of value automatically determines the type of widget:
+The type of value automatically determines the type of widget
 
-- DatBoolean : expects a boolean to display a checkbox
-- DatButton: expects a function to display a button
-- DatNumber: expects an object with:
+
+### number input:
+
+Expects an object with:
+
 ```
 {
 	value: number
 	min: number
 	max: number
 	step: number
+	showSlider:
 }
 ```
-- DatSelect: expects an object
+
+[See here for details](https://github.com/cyrilf/vue-dat-gui/#datnumber) on default values.
+
+### Select dropdown
+
+Expects an object with:
+
 ```
 {
 	currentValue: string
 	options: string[]
 }
 ```
-- DatString: expects a string
-- No support for color picker.
+
+### Color Picker
+
+Expects an object with:
+
+```
+{
+	hex: string with an hexadecimal color
+}
+```
+
+### checkbox
+
+Expects a boolean
+
+### Button
+
+Expects a function, signed `(any) => void`
+
+
+### Text Input
+
+Expects a string
+
 
 ## How it works
 

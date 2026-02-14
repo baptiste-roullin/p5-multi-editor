@@ -3,17 +3,20 @@
 import { isObject } from '@/capture/utils'
 const { label, folder } = defineProps(["index", "label", "folder"])
 import { p5Store } from '@/store'
-import { DatBoolean } from '@cyrilf/vue-dat-gui'
-
+import { DatBoolean, DatColor } from '@cyrilf/vue-dat-gui'
+import datColorr from "../components/datColorr.vue"
 const store = p5Store()
 
 function isNumberInput(varItem) {
-	return (isObject(varItem) && typeof varItem.value === "number" ? true : false)
+	return (isObject(varItem) && varItem.hasOwnProperty("value") && typeof varItem.value === "number" ? true : false)
 }
 function isSelect(varItem) {
 	return (isObject(varItem) && Array.isArray(varItem.options) ? true : false)
 }
 
+function isColorpicker(varItem) {
+	return (isObject(varItem) && varItem.hasOwnProperty("hex") && typeof varItem.hex === "string" ? true : false)
+}
 
 // Not used for DatString and DatBoolean. Assigning the ref to local variable loses the reactivity.
 let varItem = store.vars[folder][label]
@@ -27,16 +30,21 @@ let varItem = store.vars[folder][label]
 	</template>
 	<template v-else-if="isNumberInput(varItem)">
 		<DatNumber v-model="varItem.value" :min="varItem.min" :max="varItem.max" :step="varItem.step"
-			:label="label" />
+			:label="label" :showSlider="varItem.showSlider" :disabled="varItem.disabled" />
 	</template>
 	<template v-else-if="isSelect(varItem)">
-		<DatSelect v-model="varItem.currentValue" :items="varItem.options" :label="label" />
+		<DatSelect v-model="varItem.currentValue" :items="varItem.options" :label="label"
+			:disabled="varItem.disabled" />
 	</template>
 	<template v-else-if="typeof varItem === 'boolean'">
 		<DatBoolean v-model="store.vars[folder][label]" :label="label" />
 	</template>
 	<template v-else-if="typeof varItem === 'string'">
 		<DatString v-model="store.vars[folder][label]" :label="label" />
+	</template>
+
+	<template v-else-if="isColorpicker(varItem)">
+		<datColorr v-model="varItem.hex" :label="label" />
 	</template>
 	<template v-else>
 		<div>Wrong data structure ⚠️</div>
