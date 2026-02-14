@@ -72,6 +72,7 @@
 	.p5c-options {
 		display: flex;
 		flex-direction: column;
+		padding-right: 10px;
 	}
 
 	.p5c-options>div {

@@ -40,6 +40,15 @@ const store = p5Store()
 	gap: 1em;
 	margin-top: 1rem;
 	width: var(--width-nav);
+	background-color: var(--color-bg-dark);
+
+
+}
+
+.nav-right>div {
+	padding-left: .5em;
+
+
 }
 
 

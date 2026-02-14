@@ -61,7 +61,7 @@ export function draw() {
 	fill(vars.Slider.red.value, vars.Slider.green.value, vars.Slider.blue.value, alpha)
 	rect(centerX - Number(vars.Select.xPosition.currentValue), centerY - y, 100, 100)
 	fill(color(vars['color picker'].color.hex))
-	circle(10, 10, 20)
+	circle(40, 40, 30)
 
 	textSize(50)
 	text(vars.String.title, centerX - 50, centerY - 100)

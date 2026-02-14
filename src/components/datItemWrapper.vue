@@ -4,7 +4,6 @@ import { isObject } from '@/capture/utils'
 const { label, folder } = defineProps(["index", "label", "folder"])
 import { p5Store } from '@/store'
 import { DatBoolean, DatColor } from '@cyrilf/vue-dat-gui'
-import datColorr from "../components/datColorr.vue"
 const store = p5Store()
 
 function isNumberInput(varItem) {
@@ -44,7 +43,7 @@ let varItem = store.vars[folder][label]
 	</template>
 
 	<template v-else-if="isColorpicker(varItem)">
-		<datColorr v-model="varItem.hex" :label="label" />
+		<datColor v-model="varItem.hex" :label="label" />
 	</template>
 	<template v-else>
 		<div>Wrong data structure ⚠️</div>
@@ -72,6 +71,10 @@ let varItem = store.vars[folder][label]
 			li:not(.folder) {
 				border-bottom: 1px solid var(--divider-light-2);
 			}
+		}
+
+		.group>folder>text {
+			background-color: var(--color-bg-dark);
 		}
 
 		select,
@@ -116,6 +119,10 @@ let varItem = store.vars[folder][label]
 				text-align: center;
 			}
 
+			.control-item.boolean .control {
+				text-align: left;
+			}
+
 			.control-item {
 				border-left: 0;
 
@@ -123,6 +130,8 @@ let varItem = store.vars[folder][label]
 					/* color: var(--number-color); */
 					color: var(--text-light-1);
 				}
+
+
 			}
 		}
 	}
