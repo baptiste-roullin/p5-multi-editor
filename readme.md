@@ -33,7 +33,7 @@ Every file in the `sketches` folder must
 
 Run `npm run build` to make a standalone app with all sketches preserved. Caveats:
 - It should run on any server, at domain level or in a subfolder. But it will not work locally by opening `index.html` in the `dist` folder. Host it somewhere or run a local dev server (eg. `npx serve dist`).
-- ~2Mb of Javascript (media encoders sure (are heavy)[https://pkg-size.dev/webm-writer h264-mp4-encoder gif.js]).
+- ~2Mb of Javascript (media encoders sure [are heavy](https://pkg-size.dev/webm-writer h264-mp4-encoder gif.js).
 - Hot-reloading and adding new sketches will not work.
 
 
@@ -102,16 +102,16 @@ Expects an object with:
 
 ### checkbox
 
-Expects a boolean
+Expects a boolean.
 
 ### Button
 
-Expects a function, signed `(any) => void`
+Expects a function, signed `(any) => void`.
 
 
 ### Text Input
 
-Expects a string
+Expects a string.
 
 
 ## How it works
