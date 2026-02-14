@@ -158,12 +158,9 @@ nav a:hover {
   }
 
   .nav-left {
-    width: 12vw;
+    width: var(--width-nav);
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
 }
 
 

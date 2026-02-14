@@ -39,8 +39,9 @@ const store = p5Store()
 	flex-direction: column;
 	gap: 1em;
 	margin-top: 1rem;
-	width: 12vw;
+	width: var(--width-nav);
 }
+
 
 
 

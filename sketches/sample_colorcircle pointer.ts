@@ -25,7 +25,7 @@ const colours = [
 ]
 
 export function setup() {
-	createCanvas(window.innerWidth * .74, window.innerHeight, undefined, document.querySelector("canvas")!)
+	createCanvas(window.innerWidth * .72, window.innerHeight, undefined, document.querySelector("canvas")!)
 	background(backgroundColour)
 	centerX = width / 2
 	centerY = height / 2

@@ -1,5 +1,5 @@
 export function setup() {
-	createCanvas(window.innerWidth * .74, window.innerHeight, undefined)
+	createCanvas(window.innerWidth * .72, window.innerHeight, undefined)
 	//createCanvas(480, 480, "webgl")
 	frameRate(10)
 }

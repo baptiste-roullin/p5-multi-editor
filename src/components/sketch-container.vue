@@ -18,7 +18,7 @@
 @media (min-width: 1024px) {
 
 	#sketch-container {
-		width: 76vw;
+		width: var(--width-body);
 		height: 100%;
 	}
 }

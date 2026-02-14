@@ -51,6 +51,11 @@
   --color-text-light: var(--white-mute);
   --color-text-dark: var(--black-mute);
 
+
+
+
+  --width-body: 72vw;
+  --width-nav:14vw;
 }
 
 

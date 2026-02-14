@@ -11,7 +11,7 @@ const p5Globalprimitives = ['setup', 'draw', 'preload', 'deviceMoved', 'deviceTu
 p5Globalprimitives.push("vars")
 
 function windowResized() {
-	resizeCanvas(window.innerWidth * .74, window.innerHeight)
+	resizeCanvas(window.innerWidth * .72, window.innerHeight)
 }
 
 export async function runP5(imports: Ref<P5Vue.Imports>, sketchName: string) {
